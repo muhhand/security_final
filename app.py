@@ -1,5 +1,6 @@
 from flask import Flask,send_from_directory
 from flask_socketio import SocketIO, emit
+import os
 
 
 app = Flask(__name__)
@@ -30,7 +31,7 @@ app.register_blueprint(switch_post_bp)
 app.register_blueprint(switch_get_bp)
 app.register_blueprint(get_video_bp)
 
-
+port = int(os.environ.get("PORT", 5000))
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,allow_unsafe_werkzeug=True)
+    socketio.run(app, debug=True,allow_unsafe_werkzeug=True,port=port)

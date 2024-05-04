@@ -59,7 +59,7 @@ def post_video():
     else:
         return jsonify({'message': 'Failed to save the video file'}), 500
 
-@app.route('/post_video', methods=['POST'])
+@post_video_bp.route('/post_video', methods=['POST'])
 def handle_post_video():
     return post_video()
 

@@ -23,7 +23,8 @@ post_video_bp = Blueprint('post_video', __name__)
 def upload_to_s3(file, bucket_name, object_name=None):
     s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
     try:
-        response = s3.upload_fileobj(file, bucket_name, object_name)
+        extra_args = {'ACL': 'public-read'}
+        response = s3.upload_fileobj(file, bucket_name, object_name, ExtraArgs=extra_args)
     except ClientError as e:
         return None, e
     return response, None
@@ -39,8 +40,8 @@ def post_video():
 
     if video_file:
         try:
-            extra_args = {'ACL': 'public-read'}
-            response, error = upload_to_s3(video_file, s3_bucket_name, video_filename, ExtraArgs=extra_args)
+            
+            response, error = upload_to_s3(video_file, s3_bucket_name, video_filename)
             if error:
                 return jsonify({'message': f'Failed to upload video to S3: {str(error)}'}), 500
         except Exception as e:

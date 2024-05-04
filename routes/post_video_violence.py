@@ -39,7 +39,8 @@ def post_video():
 
     if video_file:
         try:
-            response, error = upload_to_s3(video_file, s3_bucket_name, video_filename)
+            extra_args = {'ACL': 'public-read'}
+            response, error = upload_to_s3(video_file, s3_bucket_name, video_filename, ExtraArgs=extra_args)
             if error:
                 return jsonify({'message': f'Failed to upload video to S3: {str(error)}'}), 500
         except Exception as e:

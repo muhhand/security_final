@@ -33,4 +33,4 @@ app.register_blueprint(get_video_bp)
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True,allow_unsafe_werkzeug=True)

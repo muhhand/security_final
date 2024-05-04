@@ -34,8 +34,8 @@ def get_video():
             'title': video['title'],
             'date': video['date'],
             'hour': video['hour'],
-            'video_filename': video['video_filename']
-            # You can add more fields if needed
+            'video_filename': video['video_filename'],
+            'video_url':video['video_url']                       # You can add more fields if needed
         })
 
     # Return the list of videos as a JSON response

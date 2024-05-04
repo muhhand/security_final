@@ -50,7 +50,7 @@ def post_video():
             'video_url': f'https://{s3_bucket_name}.s3.amazonaws.com/{video_filename}',
             'userid': userid,
             'date': video_filename.split('')[0],
-            'hour': videofilename.split('')[1].split('.')[0],
+            'hour': video_filename.split('')[1].split('.')[0],
             'video_filename': video_filename
         }
 

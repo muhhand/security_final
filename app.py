@@ -4,11 +4,19 @@ import os
 
 
 app = Flask(__name__)
+
 socketio = SocketIO(app,debug=True, cors_allowed_origins='*')
 @socketio.on('message')
 def handle_message(data):
     emit('message', data, broadcast=True )
     print('server received message' ,data)
+
+@socketio.on('send to server')
+def receive_frame_and_send_to_flutter(data):
+    try:
+        emit('receive from server' , data ,broadcast=True)
+    except Exception as e:
+        print('Error: ' + str(e))
 
 
 

@@ -1,11 +1,13 @@
 from flask import Flask,send_from_directory
 from flask_socketio import SocketIO, emit
 import os
+import eventlet
 
 
 app = Flask(__name__)
 
-socketio = SocketIO(app,debug=True, cors_allowed_origins='*')
+socketio = SocketIO(app,debug=True, cors_allowed_origins='*',logger=True,
+    engineio_logger=True)
 @socketio.on('message')
 def handle_message(data):
     emit('message', data, broadcast=True )

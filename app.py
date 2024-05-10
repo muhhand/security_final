@@ -1,7 +1,7 @@
 from flask import Flask,send_from_directory
 from flask_socketio import SocketIO, emit
 import os
-import eventlet
+
 
 
 app = Flask(__name__)

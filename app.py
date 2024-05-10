@@ -10,8 +10,11 @@ socketio = SocketIO(app,debug=False, cors_allowed_origins='*',logger=True,
     engineio_logger=True)
 @socketio.on('message')
 def handle_message(data):
-    emit('message', data, broadcast=True )
-    print('server received message' ,data)
+    try:
+        emit('message', data, broadcast=True )
+        print('server received message' ,data)
+    except Exception as e:
+        print('Error: ' + str(e))
 
 @socketio.on('send to server')
 def receive_frame_and_send_to_flutter(data):

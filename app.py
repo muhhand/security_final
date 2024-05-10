@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-socketio = SocketIO(app,debug=True, cors_allowed_origins='*',logger=True,
+socketio = SocketIO(app,debug=False, cors_allowed_origins='*',logger=True,
     engineio_logger=True)
 @socketio.on('message')
 def handle_message(data):

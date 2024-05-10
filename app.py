@@ -23,7 +23,13 @@ def receive_frame_and_send_to_flutter(data):
     except Exception as e:
         print('Error: ' + str(e))
 
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
 
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
 
 from routes.signup import signup_bp
 from routes.login import login_bp

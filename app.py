@@ -43,3 +43,4 @@ port = int(os.environ.get("PORT", 5000))
 
 if __name__ == '__main__':
     socketio.run(app, debug=True,allow_unsafe_werkzeug=True,port=port)
+#web: gunicorn app:app

@@ -1,27 +1,7 @@
 import json
 from flask import Blueprint, jsonify, request
-from flask import Flask, render_template, request, jsonify
-from werkzeug.utils import secure_filename
-import os
-import numpy as np
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.preprocessing import image
-from PIL import Image
-import cv2
-import os
-import io
-import sys
-import numpy as np
-import base64
-from datetime import datetime
+from flask import Flask,request, jsonify
 from pymongo import MongoClient
-from werkzeug.utils import secure_filename
-from flask_pymongo import PyMongo
-from inference_sdk import InferenceHTTPClient
-from werkzeug.security import generate_password_hash, check_password_hash
-import face_recognition
-import cvzone
 from bson import ObjectId, json_util
 
 

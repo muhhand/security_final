@@ -30,7 +30,7 @@ def handle_connect():
 @socketio.on('disconnect')
 def handle_disconnect():
     print('Client disconnected')
-
+from routes.face_detect import detect_face
 from routes.signup import signup_bp
 from routes.login import login_bp
 from routes.post_video_violence import post_video_bp
@@ -43,6 +43,7 @@ app.config['UPLOADED_VIDEOS_DEST'] = 'uploads/videos'
 def download_file(filename):
     return send_from_directory(app.config['UPLOADED_VIDEOS_DEST'], filename)
  
+app.register_blueprint(detect_face)
 app.register_blueprint(signup_bp)#done
 app.register_blueprint(login_bp)#done
 app.register_blueprint(post_video_bp)

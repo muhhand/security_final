@@ -35,4 +35,4 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
 
     # Return user ID on successful login
-    return jsonify({'user_id': str(user['_id'])}), 200
+    return jsonify({'user_id': str(user['_id']),'username': str(user['username']),'email': str(user['email'])}), 200

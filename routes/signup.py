@@ -31,6 +31,8 @@ def signup():
 
     username = data.get('username')
     password = data.get('password')
+    phone = data.get('phone')
+    email = data.get('email')
 
     if not username or not password:
         return jsonify({'message': 'Username and password are required'}), 400
@@ -39,7 +41,9 @@ def signup():
 
     new_user = {
         'username': username,
-        'password': hashed_password
+        'password': hashed_password,
+        'phone': phone,
+        'email': email
     }
 
     users.insert_one(new_user)

@@ -8,28 +8,7 @@ app = Flask(__name__)
 
 socketio = SocketIO(app,debug=False, cors_allowed_origins='*',logger=True,
     engineio_logger=True)
-@socketio.on('message')
-def handle_message(data):
-    try:
-        emit('message', data, broadcast=True )
-        print('server received message' ,data)
-    except Exception as e:
-        print('Error: ' + str(e))
 
-@socketio.on('send to server')
-def receive_frame_and_send_to_flutter(data):
-    try:
-        emit('receive from server' , data ,broadcast=True)
-    except Exception as e:
-        print('Error: ' + str(e))
-
-@socketio.on('connect')
-def handle_connect():
-    print('Client connected')
-
-@socketio.on('disconnect')
-def handle_disconnect():
-    print('Client disconnected')
 from routes.face_detect import detect_face
 from routes.signup import signup_bp
 from routes.login import login_bp

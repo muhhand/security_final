@@ -25,7 +25,13 @@ def receive_frame_and_send_to_flutter(data):
     except Exception as e:
         print('Error: ' + str(e))
 
-        
+@socketio.on('notification')
+def handle_notification(data):
+    try:
+        emit('notification', data, broadcast=True )
+        print('server received notification' ,data)
+    except Exception as e:
+        print('Error: ' + str(e))        
 
 @socketio.on('connect')
 def handle_connect():

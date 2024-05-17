@@ -36,3 +36,5 @@ def login():
 
     # Return user ID on successful login
     return jsonify({'user_id': str(user['_id']),'username': str(user['username']),'email': str(user['email']),'phone': str(user['phone'])}), 200
+
+

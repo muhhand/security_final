@@ -37,7 +37,7 @@ app.register_blueprint(get_video_bp)
 app.register_blueprint(change_password_bp)
 app.register_blueprint(forget_password_bp)
 app.register_blueprint(upload_student_bp)
-app.register_blueprint(detect_face)
+
 
 port = int(os.environ.get("PORT", 5000))
 

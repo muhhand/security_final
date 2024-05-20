@@ -1,6 +1,6 @@
 import json
 from flask import Blueprint, jsonify, request
-from flask import Flask,request, jsonify
+from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 from bson import ObjectId, json_util
 
@@ -23,9 +23,10 @@ collection = db['students']
 @detect_face.route('/get_faces', methods=['GET'])
 def get_face_dsa():
     try:
-        d = list(collection.find({}))
+        data = request.get_json()
+        user_id = data['user_id']
+        d = list(collection.find({"user_id":user_id}))
         data = json.loads(json_util.dumps(d))
-        print('data ' ,  data , type(data))
         known_face_encodings = []
         images = [doc['image'] for doc in data if 'image' in doc]
     

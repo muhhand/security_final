@@ -18,6 +18,9 @@ from routes.switch_get import switch_get_bp
 from routes.get_video_violence import get_video_bp
 from routes.change_password import change_password_bp
 from routes.forget_password import forget_password_bp
+from routes.post_student import upload_student_bp
+from routes.face_detect import detect_face
+
 
 app.config['UPLOADED_VIDEOS_DEST'] = 'uploads/videos'
 @app.route('/uploads/<path:filename>')
@@ -33,6 +36,8 @@ app.register_blueprint(switch_get_bp)
 app.register_blueprint(get_video_bp)
 app.register_blueprint(change_password_bp)
 app.register_blueprint(forget_password_bp)
+app.register_blueprint(upload_student_bp)
+app.register_blueprint(detect_face)
 
 port = int(os.environ.get("PORT", 5000))
 
